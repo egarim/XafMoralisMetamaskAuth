@@ -1,0 +1,23 @@
+﻿@using Microsoft.AspNetCore.Components.Web
+
+@inject Microsoft.JSInterop.IJSRuntime Js
+
+<input value=@ComponentModel.Value
+       @onchange=@(e => ComponentModel.SetValueFromUI((string)e.Value))
+       readonly=@ComponentModel.ReadOnly
+       @attributes=@ComponentModel.Attributes />
+<DevExpress.Blazor.DxButton Text="Authenticate with meta mask" Click="LoginWithMetaMask" ></DevExpress.Blazor.DxButton>
+
+@code {
+    [Parameter]
+    public InputModel ComponentModel { get; set; }
+    public static RenderFragment Create(InputModel componentModel) =>
+    @<InputRenderer ComponentModel=@componentModel />;
+
+    async Task LoginWithMetaMask()
+    {
+        var Id=  await Js.InvokeAsync<string>("login", null);
+        System.Diagnostics.Debug.WriteLine(Id);
+        this.ComponentModel.Value = Id;
+    }
+}

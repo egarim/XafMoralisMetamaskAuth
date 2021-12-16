@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <SchemaModules>
+    <SchemaModule Name="CloneObjectModule" Version="21.2.4.0" IsNewNode="True" />
+    <SchemaModule Name="SystemModule" Version="21.2.4.0" IsNewNode="True" />
+  </SchemaModules>
+  <Views>
+    <DetailView Id="CustomLogonParameters_DetailView">
+      <Items>
+        <PropertyEditor Id="Login" PropertyEditorType="XafMoralisMetamaskAuth.Module.Blazor.CustomStringPropertyEditor" />
+      </Items>
+    </DetailView>
+  </Views>
+</Application>
